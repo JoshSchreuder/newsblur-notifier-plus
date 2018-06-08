@@ -2,6 +2,8 @@
 
 Shows the unread count from your NewsBlur account.
 
+Available from the [Chrome Web Store](https://chrome.google.com/webstore/detail/nbmlfepgaaalffdmmjhpkgpjjlnpjjlp).
+
 Based on the [Newsblur Notifier](https://chrome.google.com/webstore/detail/newsblur-notifier/nnbhbdncokmmjheldobdfbmfpamelojh) extension by totaldeadbeat which is sadly no longer functioning in new versions of Chrome.
 
 # Development stuff
