@@ -1,0 +1,18 @@
+{
+  "appName": {
+    "message": "Newsblur Notifier Plus",
+    "description": "The name of the application"
+  },
+  "appShortName": {
+    "message": "Newsblur N+",
+    "description": "The short_name (maximum of 12 characters recommended) is a short version of the app's name."
+  },
+  "appDescription": {
+    "message": "Shows the unread count from your NewsBlur account",
+    "description": "The description of the application"
+  },
+  "browserActionTitle": {
+    "message": "Newsblur Notifier Plus",
+    "description": "The title of the browser action button"
+  }
+}

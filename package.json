@@ -1,0 +1,12 @@
+{
+    "name": "Newsblur-Notifier-Plus",
+    "version": "1.0.0",
+    "description": "Shows the unread count from your NewsBlur account",
+    "scripts": {
+        "dev": "webextension-toolbox dev",
+        "build": "webextension-toolbox build"
+    },
+    "devDependencies": {
+        "webextension-toolbox": "latest"
+    }
+}
