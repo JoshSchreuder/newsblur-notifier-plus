@@ -1,5 +1,5 @@
 const defaultOptions = {
-    pollinterval: 5,
+    pollinterval: 10,
     ignoreNegative: false,
     highlightPositive: true,
     useSsl: true
