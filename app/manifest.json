@@ -9,9 +9,7 @@
         "128": "images/icon-128.png"
     },
     "background": {
-        "scripts": [
-            "scripts/background.js"
-        ]
+        "scripts": ["scripts/background.js"]
     },
     "browser_action": {
         "default_icon": {
@@ -25,10 +23,5 @@
         "page": "pages/options.html",
         "chrome_style": true
     },
-    "permissions": [
-        "*://*.newsblur.com/*",
-        "alarms",
-        "cookies",
-        "storage"
-    ]
+    "permissions": ["*://*.newsblur.com/*", "alarms", "cookies", "storage"]
 }

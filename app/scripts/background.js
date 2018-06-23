@@ -133,7 +133,11 @@ browser.runtime.onInstalled.addListener(function() {
 });
 
 browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    if (changeInfo.status == "complete") {
+    if (
+        changeInfo.status == "complete" &&
+        tab.url &&
+        tab.url.includes("newsblur.com")
+    ) {
         requestUpdate();
     }
 });
