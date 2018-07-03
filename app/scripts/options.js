@@ -1,4 +1,5 @@
 import { defaultOptions, restoreDefault } from "./defaults";
+import { initaliseAlarm } from "./alarms";
 
 const save_options = () => {
     const pollInterval = document.getElementById("pollInterval")
@@ -10,7 +11,7 @@ const save_options = () => {
 
     browser.storage.sync
         .set({
-            pollinterval: pollInterval,
+            pollInterval: pollInterval,
             ignoreNegative: ignoreNegative,
             highlightPositive: highlightPositive,
             useSsl: useSsl
@@ -19,14 +20,12 @@ const save_options = () => {
             location.reload();
         });
 
-    browser.alarms.get("newsblur.notifier").then(alarm => {
-        alarm.periodInMinutes = Number(pollInterval);
-    });
+    initaliseAlarm(Number(pollInterval));
 };
 
 const init = () => {
     browser.storage.sync.get(defaultOptions).then(items => {
-        document.getElementById("pollInterval").value = items.pollinterval;
+        document.getElementById("pollInterval").value = items.pollInterval;
         document.getElementById("ignoreNegative").checked =
             items.ignoreNegative;
         document.getElementById("highlightPositive").checked =
