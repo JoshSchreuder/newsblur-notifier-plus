@@ -78,26 +78,28 @@ const updateFailed = result => {
 };
 
 const processResponse = ({ feeds }) => {
-    let unread = Object.values(feeds).reduce(
-        (prev, curr) => {
-            return {
-                positive: prev.positive + curr.ps,
-                neutral: prev.neutral + curr.nt,
-                negative: prev.negative + curr.ng,
-                total:
-                    prev.total +
-                    curr.ps +
-                    curr.nt +
-                    (ignoreNegativeOpt ? 0 : curr.ng)
-            };
-        },
-        {
-            positive: 0,
-            neutral: 0,
-            negative: 0,
-            total: 0
-        }
-    );
+    let unread = Object.values(feeds)
+        .filter(e => e.active)
+        .reduce(
+            (prev, curr) => {
+                return {
+                    positive: prev.positive + curr.ps,
+                    neutral: prev.neutral + curr.nt,
+                    negative: prev.negative + curr.ng,
+                    total:
+                        prev.total +
+                        curr.ps +
+                        curr.nt +
+                        (ignoreNegativeOpt ? 0 : curr.ng)
+                };
+            },
+            {
+                positive: 0,
+                neutral: 0,
+                negative: 0,
+                total: 0
+            }
+        );
 
     if (unread.total > 0) {
         if (highlightPositiveOpt && unread.positive > 0) {
