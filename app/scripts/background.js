@@ -10,6 +10,12 @@ browser.runtime.onInstalled.addListener(function() {
     });
 });
 
+browser.runtime.onStartup.addListener(function() {
+    browser.storage.sync.get(["pollInterval"]).then(({ pollInterval }) => {
+        initaliseAlarm(pollInterval);
+    });
+});
+
 browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     if (
         changeInfo.status == "complete" &&
