@@ -12,11 +12,11 @@ const COLOURS = {
 
 const requestUpdate = () => {
     getSettings().then(() => {
-        const xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    let data = JSON.parse(xhr.responseText);
+        fetch(`${baseUrl}/reader/refresh_feeds`, {
+            credentials: "include"
+        })
+            .then(response => {
+                response.json().then(data => {
                     if (data.result === "ok") {
                         if (data.authenticated !== true) {
                             notLoggedIn();
@@ -26,13 +26,13 @@ const requestUpdate = () => {
                     } else {
                         updateFailed(data.result);
                     }
-                } else {
-                    updateFailed(xhr.responseText);
-                }
-            }
-        };
-        xhr.open("GET", `${baseUrl}/reader/refresh_feeds`, true);
-        xhr.send();
+                });
+            })
+            .catch(err => {
+                err.json().then(data => {
+                    updateFailed(data.result);
+                });
+            });
     });
 };
 
@@ -49,16 +49,13 @@ const getSettings = () => {
 };
 
 const fetchFeeds = callback => {
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function(data) {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            callback(JSON.parse(xhr.responseText));
-        } else {
+    fetch(`${baseUrl}/reader/feeds`, { credentials: "include" })
+        .then(response => {
+            response.json().then(callback);
+        })
+        .catch(() => {
             callback({ feeds: {} });
-        }
-    };
-    xhr.open("GET", `${baseUrl}/reader/feeds`, true);
-    xhr.send();
+        });
 };
 
 const error = () => {
