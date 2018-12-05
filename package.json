@@ -7,7 +7,7 @@
         "build": "webextension-toolbox build"
     },
     "devDependencies": {
-        "webextension-toolbox": "^1.1.1"
+        "webextension-toolbox": "^3.0.0"
     },
     "license": "MIT"
 }
