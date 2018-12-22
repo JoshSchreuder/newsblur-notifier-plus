@@ -50,12 +50,8 @@ const getSettings = () => {
 
 const fetchFeeds = callback => {
     fetch(`${baseUrl}/reader/feeds`, { credentials: "include" })
-        .then(response => {
-            response.json().then(callback);
-        })
-        .catch(() => {
-            callback({ feeds: {} });
-        });
+        .then(response => response.json().then(callback))
+        .catch(() => callback({ feeds: {} }));
 };
 
 const error = () => {
